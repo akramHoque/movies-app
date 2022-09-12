@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import img from '../assests/login1.jpg'
+import React from 'react';
+import styled from 'styled-components';
+import img from '../assests/login.jpg';
 
 export default function BackgroundImage() {
   return (
@@ -9,7 +9,6 @@ export default function BackgroundImage() {
     </Container>
   )
 }
-
 const Container = styled.div`
 height: 100vh;
   width: 100vw;
@@ -17,9 +16,5 @@ height: 100vh;
     height: 100vh;
     width: 100vw;
   }
+`;
 
-
-
-
-
-`

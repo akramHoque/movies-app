@@ -11,25 +11,27 @@ import { useNavigate } from "react-router-dom";
 // import { fetchMovies, getGenres } from "../store";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { fetchMovies, getGenres } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 // import Slider from "../components/Slider";
 function Netflix() {
   const [isScrolled, setIsScrolled] = useState(false);
-  // const movies = useSelector((state) => state.netflix.movies);
-  // const genres = useSelector((state) => state.netflix.genres);
-  // const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+   const movies = useSelector((state) => state.netflix.movies);
+   const genres = useSelector((state) => state.netflix.genres);
+   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getGenres());
-  // }, []);
+  useEffect(() => {
+   dispatch(getGenres());
+   }, []);
 
-  // useEffect(() => {
-  //   if (genresLoaded) {
-  //     dispatch(fetchMovies({ genres, type: "all" }));
-  //   }
-  // }, [genresLoaded]);
+  useEffect(() => {
+    if (genresLoaded) {
+      dispatch(fetchMovies({ genres, type: "all" }));
+    }
+  }, [genresLoaded]);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (!currentUser) navigate("/login");
