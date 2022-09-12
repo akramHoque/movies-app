@@ -20,6 +20,7 @@ return genres;
 });
 
 const createArrayFromRawData = (array, moviesArray, genres) => {
+  // console.log(array);
   array.forEach((movie) => {
     const movieGenres = [];
     movie.genre_ids.forEach((genre) => {
@@ -59,6 +60,7 @@ export const fetchMovies = createAsyncThunk(
       genres,
       true
     );
+   
   }
 );
 
@@ -71,6 +73,9 @@ const NetflixSlice = createSlice({
     builder.addCase(getGenres.fulfilled, (state, action) => {
       state.genres = action.payload;
       state.genresLoaded = true;
+    });
+    builder.addCase(fetchMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
     });
   },
 
