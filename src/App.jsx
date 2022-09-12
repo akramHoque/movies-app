@@ -2,7 +2,7 @@ import React from 'react';
 import  { Route, Routes } from 'react-router-dom'
 import Login from './Components/Pages/Login';
 import Netflix from './Components/Pages/Netflix';
-import SignUp from './Components/Pages/SignUp';
+import Signup from './Components/Pages/Signup';
 
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
     
      <Routes>
         <Route exact path="/login" element={<Login/>} />
-        <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Netflix />} />
       </Routes>
     
