@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../../assests/logo.png";
-import background from "../../assests/login.jpg";
+import background from "../../assests/login1.jpg";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../BackgroundImage";
 import Header from "../Header";

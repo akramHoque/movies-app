@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import img from '../assests/login.jpg'
+import img from '../assests/login1.jpg'
 
 export default function BackgroundImage() {
   return (
