@@ -6,13 +6,12 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
-// import axios from "axios";
+import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../Components/Pages/Store/firebase-config";
 import { useDispatch } from "react-redux";
-// import { removeMovieFromLiked } from "../Components/store";
+// import { removeMovieFromLiked } from "../store";
 import video from "../assests/vedio.mp4";
-import axios from "axios";
 
 export default React.memo(function Card({ index, movieData, isLiked = false }) {
   const navigate = useNavigate();
@@ -79,6 +78,11 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
                 {isLiked ? (
                   <BsCheck
                     title="Remove from List"
+                    // onClick={() =>
+                    //   dispatch(
+                    //     removeMovieFromLiked({ movieId: movieData.id, email })
+                    //   )
+                    // }
                   />
                 ) : (
                   <AiOutlinePlus title="Add to my list" onClick={addToList} />

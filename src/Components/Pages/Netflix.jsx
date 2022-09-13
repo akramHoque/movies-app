@@ -3,12 +3,10 @@ import styled from "styled-components";
 import Navbar from "../Navbar";
 import backgroundImage from "../../assests/home1.jpg";
 import MovieLogo from "../../assests/homeTitle.webp";
-
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../Pages/Store/firebase-config";
 import { useNavigate } from "react-router-dom";
-//  import { useSelector} from "react-redux";
-//  import { fetchMovies, getGenres } from "../store";
+
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { fetchMovies, getGenres } from "../store";

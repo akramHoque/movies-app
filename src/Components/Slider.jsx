@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import CardSlider from "./CardSlider";
 export default function Slider({ movies }) {
-//  console.log(movies)
   const getMoviesFromRange = (from, to) => {
     return movies.slice(from, to);
   };
@@ -16,7 +15,7 @@ export default function Slider({ movies }) {
       />
       <CardSlider
         data={getMoviesFromRange(30, 40)}
-        title="Popular on Movies"
+        title="Popular on Netflix"
       />
       <CardSlider data={getMoviesFromRange(40, 50)} title="Action Movies" />
       <CardSlider data={getMoviesFromRange(50, 60)} title="Epics" />
