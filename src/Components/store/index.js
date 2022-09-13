@@ -64,6 +64,21 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
+export const fetchDataByGenre = createAsyncThunk(
+  "netflix/trending",
+  async ({genre, type }, thunkAPI) => {
+    const {
+      netflix: { genres },
+    } = thunkAPI.getState();
+    return getRawData(
+      `${TMDB_BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
+      genres,
+      true
+    );
+   
+  }
+);
+
 
 
 const NetflixSlice = createSlice({
