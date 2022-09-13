@@ -19,6 +19,7 @@ export default function Movies() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('in use effect');
    dispatch(getGenres());
    }, []);
 
@@ -48,7 +49,7 @@ export default function Movies() {
         </div>
         
         <div className="data">
-        <SelectGenre genres={genres} />
+        <SelectGenre genres={genres} type ="movie" />
             { movies.length ? <Slider movies={movies}/> :<NotAvailable />}
         </div>
     </Container>
