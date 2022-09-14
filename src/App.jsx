@@ -5,6 +5,7 @@ import Movies from './Components/Pages/Movies';
 import Netflix from './Components/Pages/Netflix';
 import Player from './Components/Pages/Player';
 import Signup from './Components/Pages/Signup';
+import TVShows from './Components/TVShows';
 
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/player" element={<Player />} />
         <Route exact path="/movies" element={<Movies />} />
+        <Route exact path="/tv" element={<TVShows />} />
         <Route exact path="/" element={<Netflix />} />
       </Routes>
     
