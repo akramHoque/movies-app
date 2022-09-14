@@ -19,11 +19,13 @@ export default function SelectGenre({ genres, type }) {
     >
       {genres.map((genre) => {
         return (
-          <option value={genre.id} key={genre.id}>
+          <option value={genre.id} key={genre.id} >
             {genre.name}
+          
           </option>
         );
       })}
+      
     </Select>
   );
 }

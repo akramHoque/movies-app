@@ -1,63 +1,62 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "../Navbar";
-import NotAvailable from "../NotAvailable";
+import CardSlider from "../CardSlider";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../Pages/Store/firebase-config";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMovies, getGenres } from "../store";
 import SelectGenre from "../SelectGenre";
 import Slider from "../Slider";
-import { fetchMovies, getGenres } from "../store";
-import { firebaseAuth } from "./Store/firebase-config";
+import NotAvailable from "../NotAvailable";
 
-export default function Movies() {
-    const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
-  const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+function MoviePage() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const movies = useSelector((state) => state.netflix.movies);
-  const genres = useSelector((state) => state.netflix.movies);
+  const genres = useSelector((state) => state.netflix.genres);
+  const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('in use effect');
-   dispatch(getGenres());
-   }, []);
+    dispatch(getGenres());
+  }, []);
 
   useEffect(() => {
     if (genresLoaded) {
-      dispatch(fetchMovies({ type: "movies" }));
+      dispatch(fetchMovies({ genres, type: "movie" }));
     }
   }, [genresLoaded]);
 
+  const [user, setUser] = useState(undefined);
 
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) setUser(currentUser.uid);
+    else navigate("/login");
+  });
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    // if (currentUser) navigate("/");
-  });
-
-
   return (
     <Container>
-
-        <div className="navbar">
-            <Navbar isScrolled={isScrolled} />
-        </div>
-        
-        <div className="data">
-        <SelectGenre genres={genres} type ="movie" />
-            { movies.length ? <Slider movies={movies}/> :<NotAvailable />}
-        </div>
+      <div className="navbar">
+        <Navbar isScrolled={isScrolled} />
+      </div>
+      <div className="data">
+        <SelectGenre genres={genres} type="movie" />
+        {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
+      </div>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
-.data {
+  .data {
     margin-top: 8rem;
     .not-available {
       text-align: center;
@@ -65,6 +64,5 @@ const Container = styled.div`
       margin-top: 4rem;
     }
   }
-
-
-`
+`;
+export default MoviePage;
