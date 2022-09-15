@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "firebase": "^9.9.4",
+    "html-webpack-plugin": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
@@ -44,7 +45,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akramHoque/movies-app.git"
@@ -53,6 +53,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/akramHoque/movies-app/issues"
-  },
-  "homepage": "https://github.com/akramHoque/movies-app#readme"
+  }
+
 }
